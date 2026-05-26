@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Play, Pause, RotateCcw, X } from 'lucide-react';
 
 const CHORD_PAIRS = [
   ["A", "C"], ["A", "G"], ["A", "E"], ["A", "Em"], ["A", "D"], ["A", "Dm"],
@@ -14,6 +15,7 @@ function App() {
   const [currentPair, setCurrentPair] = useState(CHORD_PAIRS[0]);
   const [timeLeft, setTimeLeft] = useState(60);
   const [isRunning, setIsRunning] = useState(false);
+  const [prepCountdown, setPrepCountdown] = useState(null);
 
   useEffect(() => {
     let interval = null;
@@ -27,11 +29,36 @@ function App() {
     return () => clearInterval(interval);
   }, [isRunning, timeLeft]);
 
-  const handleStart = () => setIsRunning(true);
+  useEffect(() => {
+    let interval = null;
+    if (prepCountdown !== null) {
+      interval = setInterval(() => {
+        setPrepCountdown((prev) => {
+          if (prev <= 1) {
+            setIsRunning(true);
+            return null;
+          }
+          return prev - 1;
+        });
+      }, 1000);
+    }
+    return () => clearInterval(interval);
+  }, [prepCountdown]);
+
+  const handleStart = () => {
+    if (timeLeft > 0) {
+      setPrepCountdown(3);
+    }
+  };
   const handlePause = () => setIsRunning(false);
   const handleRestart = () => {
+    setPrepCountdown(null);
     setIsRunning(false);
     setTimeLeft(60);
+  };
+  const handleCancelPrep = () => {
+    setPrepCountdown(null);
+    setIsRunning(false);
   };
 
   const handleChangeChords = () => {
@@ -62,36 +89,69 @@ function App() {
       </div>
 
       {/* Bottom Area: Controls */}
-      <div className="fixed bottom-0 left-0 right-0 p-4 bg-slate-800 shadow-lg pb-6">
-        <div className="max-w-md mx-auto flex flex-col gap-4">
-          <div className="flex items-center justify-between">
-            <span className="text-4xl font-mono text-slate-200">{formatTime(timeLeft)}</span>
-            <div className="flex space-x-2">
-              <button 
-                onClick={handleStart} 
-                disabled={isRunning || timeLeft === 0}
-                className="px-6 py-3 bg-slate-700 hover:bg-slate-600 disabled:opacity-50 disabled:cursor-not-allowed rounded-2xl text-lg font-medium transition-colors"
-              >
-                Start
-              </button>
-              <button 
-                onClick={handlePause} 
-                disabled={!isRunning}
-                className="px-6 py-3 bg-slate-700 hover:bg-slate-600 disabled:opacity-50 disabled:cursor-not-allowed rounded-2xl text-lg font-medium transition-colors"
-              >
-                Pause
-              </button>
-              <button 
-                onClick={handleRestart} 
-                className="px-6 py-3 bg-slate-700 hover:bg-slate-600 rounded-2xl text-lg font-medium transition-colors"
-              >
-                Restart
-              </button>
+      <div className="p-4 bg-slate-800 shadow-lg pb-6 relative">
+        {/* Preparation Countdown Overlay */}
+        {prepCountdown !== null && (
+          <div className="absolute inset-0 bg-slate-800 flex flex-col items-center justify-center z-20">
+            {/* Close Button */}
+            <button
+              onClick={handleCancelPrep}
+              className="absolute top-4 right-4 p-2 text-slate-400 hover:text-slate-100 rounded-full hover:bg-slate-700 transition-colors"
+              aria-label="Cancel countdown"
+            >
+              <X className="w-6 h-6" />
+            </button>
+
+            {/* Countdown Display */}
+            <div className="text-center">
+              <span className="text-sm font-semibold tracking-wider text-slate-400 uppercase">Prepare to play in</span>
+              <div className="text-6xl font-black text-slate-100 mt-1 animate-pulse">{prepCountdown}</div>
             </div>
           </div>
-          <button 
-            onClick={handleChangeChords} 
-            className="w-full py-4 bg-slate-100 text-slate-900 hover:bg-slate-200 rounded-2xl text-xl font-semibold transition-colors"
+        )}
+
+        <div className="w-full lg:w-4xl mx-auto justify-center flex gap-4">
+          <div className="w-full flex flex-col justify-center gap-4">
+            <div className="w-full bg-slate-700 h-3 rounded-full overflow-hidden">
+              <div
+                className="bg-slate-100 h-full transition-all duration-1000 ease-linear"
+                style={{ width: `${(timeLeft / 60) * 100}%` }}
+              />
+            </div>
+            <div className="flex items-center justify-between">
+              <span className="text-4xl font-mono text-slate-200">{formatTime(timeLeft)}</span>
+              <div className="flex space-x-2">
+                {isRunning ? (
+                  <button
+                    onClick={handlePause}
+                    className="w-14 h-14 flex items-center justify-center bg-slate-700 hover:bg-slate-600 disabled:opacity-50 disabled:cursor-not-allowed rounded-2xl transition-colors"
+                    aria-label="Pause"
+                  >
+                    <Pause className="w-6 h-6 text-slate-100 fill-slate-100" />
+                  </button>
+                ) : (
+                  <button
+                    onClick={handleStart}
+                    className="w-14 h-14 flex items-center justify-center bg-slate-700 hover:bg-slate-600 disabled:opacity-50 disabled:cursor-not-allowed rounded-2xl transition-colors"
+                    aria-label="Start"
+                  >
+                    <Play className="w-6 h-6 text-slate-100 fill-slate-100" />
+                  </button>
+                )
+                }
+                <button
+                  onClick={handleRestart}
+                  className="w-14 h-14 flex items-center justify-center bg-slate-700 hover:bg-slate-600 rounded-2xl transition-colors"
+                  aria-label="Restart"
+                >
+                  <RotateCcw className="w-6 h-6 text-slate-100" />
+                </button>
+              </div>
+            </div>
+          </div>
+          <button
+            onClick={handleChangeChords}
+            className="py-4 bg-slate-100 text-slate-900 hover:bg-slate-200 rounded-2xl text-xl font-semibold transition-colors"
           >
             Change Chords
           </button>
