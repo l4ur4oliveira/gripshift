@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&family=Oswald:wght@300;400;500;600;700&display=swap');
-
 @import "tailwindcss";
 
 @theme {
@@ -9,8 +7,8 @@
   --color-brandCrimson: #B11226;
   --color-brandCard: #161616;
 
-  --font-sans: 'Open Sans', sans-serif;
-  --font-oswald: 'Oswald', sans-serif;
+  --font-sans: var(--font-open-sans), sans-serif;
+  --font-oswald: var(--font-oswald), sans-serif;
 }
 
 body {
@@ -18,5 +16,4 @@ body {
   padding: 0;
   background-color: var(--color-brandBlack);
   color: var(--color-brandWhite);
-  font-family: var(--font-sans);
 }

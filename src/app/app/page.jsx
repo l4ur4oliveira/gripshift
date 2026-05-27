@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
 import { Play, Pause, RotateCcw, X } from 'lucide-react';
 
@@ -11,7 +13,7 @@ const CHORD_PAIRS = [
   ["Am", "Em"]
 ];
 
-function App() {
+export default function PracticeApp() {
   const [currentPair, setCurrentPair] = useState(CHORD_PAIRS[0]);
   const [timeLeft, setTimeLeft] = useState(60);
   const [isRunning, setIsRunning] = useState(false);
@@ -78,7 +80,6 @@ function App() {
 
   return (
     <div className="flex flex-col h-screen bg-brandBlack text-brandWhite font-sans selection:bg-brandCrimson selection:text-brandWhite">
-      {/* Main Area: Chords */}
       <div className="flex-1 flex flex-col sm:flex-row items-center justify-center p-4 gap-8 sm:gap-16">
         <div className="flex-1 flex items-center justify-center w-full">
           <span className="text-8xl sm:text-9xl font-oswald font-black text-brandCrimson select-none">{currentPair[0]}</span>
@@ -88,12 +89,9 @@ function App() {
         </div>
       </div>
 
-      {/* Bottom Area: Controls */}
       <div className="p-6 bg-brandCard border-t border-brandSilver/10 shadow-2xl relative">
-        {/* Preparation Countdown Overlay */}
         {prepCountdown !== null && (
           <div className="absolute inset-0 bg-brandCard flex flex-col items-center justify-center z-20">
-            {/* Close Button */}
             <button
               onClick={handleCancelPrep}
               className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center bg-brandCard hover:bg-brandBlack border border-brandSilver/10 text-brandSilver hover:text-brandWhite rounded transition-all cursor-pointer"
@@ -102,7 +100,6 @@ function App() {
               <X className="w-5 h-5" />
             </button>
 
-            {/* Countdown Display */}
             <div className="text-center">
               <span className="text-sm font-sans font-semibold tracking-wider text-brandSilver uppercase">Prepare to play in</span>
               <div className="text-6xl font-oswald font-black text-brandWhite mt-1 animate-pulse">{prepCountdown}</div>
@@ -112,14 +109,12 @@ function App() {
 
         <div className="w-full lg:max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-6">
           <div className="flex-grow w-full flex flex-col gap-4">
-            {/* Visual Progress Bar */}
             <div className="w-full bg-brandBlack border border-brandSilver/10 h-2 rounded overflow-hidden">
               <div
                 className="bg-brandCrimson h-full transition-all duration-1000 ease-linear"
                 style={{ width: `${(timeLeft / 60) * 100}%` }}
               />
             </div>
-            {/* Timer and Icon Buttons */}
             <div className="flex items-center justify-between">
               <span className="text-4xl font-oswald font-bold text-brandWhite tracking-wider">{formatTime(timeLeft)}</span>
               <div className="flex gap-3">
@@ -150,7 +145,6 @@ function App() {
               </div>
             </div>
           </div>
-          {/* Change Chords Button */}
           <button
             onClick={handleChangeChords}
             className="w-full md:w-auto h-20 px-8 bg-brandCrimson hover:bg-red-700 text-brandWhite font-oswald font-semibold uppercase tracking-wider rounded transition-all cursor-pointer whitespace-nowrap"
@@ -162,5 +156,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
