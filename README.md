@@ -9,13 +9,13 @@ The experience should be minimal, distraction-free, and optimized for quick dail
 ## Tech Stack
 
 * React
-* Vite
+* Next.js
 * Tailwind CSS
 
 **Check the AI instructions that make this project possible:** 
 
-* [AGENTS.md](AGENTS.md)
-* [SPEC.md](docs/SPEC.md)
+* [AGENTS](AGENTS.md)
+* [SPECs](docs/)
 
 ## Development Setup
 
@@ -31,4 +31,4 @@ The experience should be minimal, distraction-free, and optimized for quick dail
    npm run dev
    ```
 
-3. Open [http://localhost:5173](http://localhost:5173) in your browser.
+3. Open [http://localhost:3000](http://localhost:3000) in your browser.
