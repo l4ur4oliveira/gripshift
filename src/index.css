@@ -1,8 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&family=Oswald:wght@300;400;500;600;700&display=swap');
+
 @import "tailwindcss";
+
+@theme {
+  --color-brandBlack: #0E0E0E;
+  --color-brandWhite: #F5F5F5;
+  --color-brandSilver: #C0C0C0;
+  --color-brandCrimson: #B11226;
+  --color-brandCard: #161616;
+
+  --font-sans: 'Open Sans', sans-serif;
+  --font-oswald: 'Oswald', sans-serif;
+}
 
 body {
   margin: 0;
   padding: 0;
-  background-color: #0f172a; /* slate-900 */
-  color: #f1f5f9; /* slate-100 */
+  background-color: var(--color-brandBlack);
+  color: var(--color-brandWhite);
+  font-family: var(--font-sans);
 }

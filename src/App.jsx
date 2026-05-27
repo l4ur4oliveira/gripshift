@@ -77,81 +77,83 @@ function App() {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-slate-900 text-slate-100 font-sans">
+    <div className="flex flex-col h-screen bg-brandBlack text-brandWhite font-sans selection:bg-brandCrimson selection:text-brandWhite">
       {/* Main Area: Chords */}
-      <div className="flex-1 flex flex-col sm:flex-row items-center justify-center p-4">
+      <div className="flex-1 flex flex-col sm:flex-row items-center justify-center p-4 gap-8 sm:gap-16">
         <div className="flex-1 flex items-center justify-center w-full">
-          <span className="text-8xl sm:text-9xl font-bold">{currentPair[0]}</span>
+          <span className="text-8xl sm:text-9xl font-oswald font-black text-brandCrimson select-none">{currentPair[0]}</span>
         </div>
         <div className="flex-1 flex items-center justify-center w-full">
-          <span className="text-8xl sm:text-9xl font-bold">{currentPair[1]}</span>
+          <span className="text-8xl sm:text-9xl font-oswald font-black text-brandWhite select-none">{currentPair[1]}</span>
         </div>
       </div>
 
       {/* Bottom Area: Controls */}
-      <div className="p-4 bg-slate-800 shadow-lg pb-6 relative">
+      <div className="p-6 bg-brandCard border-t border-brandSilver/10 shadow-2xl relative">
         {/* Preparation Countdown Overlay */}
         {prepCountdown !== null && (
-          <div className="absolute inset-0 bg-slate-800 flex flex-col items-center justify-center z-20">
+          <div className="absolute inset-0 bg-brandCard flex flex-col items-center justify-center z-20">
             {/* Close Button */}
             <button
               onClick={handleCancelPrep}
-              className="absolute top-4 right-4 p-2 text-slate-400 hover:text-slate-100 rounded-full hover:bg-slate-700 transition-colors"
+              className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center bg-brandCard hover:bg-brandBlack border border-brandSilver/10 text-brandSilver hover:text-brandWhite rounded transition-all cursor-pointer"
               aria-label="Cancel countdown"
             >
-              <X className="w-6 h-6" />
+              <X className="w-5 h-5" />
             </button>
 
             {/* Countdown Display */}
             <div className="text-center">
-              <span className="text-sm font-semibold tracking-wider text-slate-400 uppercase">Prepare to play in</span>
-              <div className="text-6xl font-black text-slate-100 mt-1 animate-pulse">{prepCountdown}</div>
+              <span className="text-sm font-sans font-semibold tracking-wider text-brandSilver uppercase">Prepare to play in</span>
+              <div className="text-6xl font-oswald font-black text-brandWhite mt-1 animate-pulse">{prepCountdown}</div>
             </div>
           </div>
         )}
 
-        <div className="w-full lg:w-4xl mx-auto justify-center flex gap-4">
-          <div className="w-full flex flex-col justify-center gap-4">
-            <div className="w-full bg-slate-700 h-3 rounded-full overflow-hidden">
+        <div className="w-full lg:max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-6">
+          <div className="flex-grow w-full flex flex-col gap-4">
+            {/* Visual Progress Bar */}
+            <div className="w-full bg-brandBlack border border-brandSilver/10 h-2 rounded overflow-hidden">
               <div
-                className="bg-slate-100 h-full transition-all duration-1000 ease-linear"
+                className="bg-brandCrimson h-full transition-all duration-1000 ease-linear"
                 style={{ width: `${(timeLeft / 60) * 100}%` }}
               />
             </div>
+            {/* Timer and Icon Buttons */}
             <div className="flex items-center justify-between">
-              <span className="text-4xl font-mono text-slate-200">{formatTime(timeLeft)}</span>
-              <div className="flex space-x-2">
+              <span className="text-4xl font-oswald font-bold text-brandWhite tracking-wider">{formatTime(timeLeft)}</span>
+              <div className="flex gap-3">
                 {isRunning ? (
                   <button
                     onClick={handlePause}
-                    className="w-14 h-14 flex items-center justify-center bg-slate-700 hover:bg-slate-600 disabled:opacity-50 disabled:cursor-not-allowed rounded-2xl transition-colors"
+                    className="w-14 h-14 flex items-center justify-center bg-brandCard hover:bg-brandBlack text-brandWhite border border-brandSilver/10 rounded transition-all cursor-pointer"
                     aria-label="Pause"
                   >
-                    <Pause className="w-6 h-6 text-slate-100 fill-slate-100" />
+                    <Pause className="w-6 h-6 fill-current" />
                   </button>
                 ) : (
                   <button
                     onClick={handleStart}
-                    className="w-14 h-14 flex items-center justify-center bg-slate-700 hover:bg-slate-600 disabled:opacity-50 disabled:cursor-not-allowed rounded-2xl transition-colors"
+                    className="w-14 h-14 flex items-center justify-center bg-brandCard hover:bg-brandBlack text-brandWhite border border-brandSilver/10 rounded transition-all cursor-pointer"
                     aria-label="Start"
                   >
-                    <Play className="w-6 h-6 text-slate-100 fill-slate-100" />
+                    <Play className="w-6 h-6 fill-current" />
                   </button>
-                )
-                }
+                )}
                 <button
                   onClick={handleRestart}
-                  className="w-14 h-14 flex items-center justify-center bg-slate-700 hover:bg-slate-600 rounded-2xl transition-colors"
+                  className="w-14 h-14 flex items-center justify-center bg-brandCard hover:bg-brandBlack text-brandSilver hover:text-brandWhite border border-brandSilver/10 rounded transition-all cursor-pointer"
                   aria-label="Restart"
                 >
-                  <RotateCcw className="w-6 h-6 text-slate-100" />
+                  <RotateCcw className="w-6 h-6" />
                 </button>
               </div>
             </div>
           </div>
+          {/* Change Chords Button */}
           <button
             onClick={handleChangeChords}
-            className="py-4 bg-slate-100 text-slate-900 hover:bg-slate-200 rounded-2xl text-xl font-semibold transition-colors"
+            className="w-full md:w-auto h-20 px-8 bg-brandCrimson hover:bg-red-700 text-brandWhite font-oswald font-semibold uppercase tracking-wider rounded transition-all cursor-pointer whitespace-nowrap"
           >
             Change Chords
           </button>
