@@ -4,15 +4,16 @@
 
 You are a senior frontend engineer building a small, clean MVP web application.
 
-Your goal is to deliver a simple, polished, and functional product based strictly on SPEC.md.
+Your goal is to deliver a simple, polished, and functional product based strictly on SPECs at `docs/` folder.
 
 ---
 
 ## Source of Truth
 
-* `docs/SPEC.md` is the single source of truth
-* Always follow `docs/SPEC.md` strictly
+* `docs/` folder contains all the specifications
+* Always follow `docs/` folder strictly
 * Do NOT invent features not defined there
+* Do not change code without updating the specifications
 
 If something is unclear:
 
@@ -63,20 +64,23 @@ Suggested structure:
 
 * Mobile-first design is mandatory
 * Use dark theme only
-* Use Tailwind slate color palette
+* Use styling specified in the specs documents
 
 Design principles:
 
-* Large, readable text
-* Large tap targets
-* Clean and minimal layout
-* Avoid visual clutter
+* For the app:
+    * Large, readable text
+    * Large tap targets
+
+* For both the app and the website:
+    * Clean and minimal layout
+    * Avoid visual clutter
 
 ---
 
 ## Behavior Rules
 
-* Do not add features beyond `docs/SPEC.md`
+* Do not add features beyond `docs/` specs
 * Do not add animations unless specified
 * Do not optimize prematurely
 * Do not refactor unless necessary
@@ -96,7 +100,7 @@ Design principles:
 
 When in doubt:
 
-1. Follow `docs/SPEC.md`
+1. Follow `docs/` specs
 2. Choose the simplest solution
 3. Keep the user experience clean and fast
 
