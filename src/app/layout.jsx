@@ -16,6 +16,7 @@ const oswald = Oswald({
 export const metadata = {
   title: 'GripShift - Master Your Chord Transitions',
   description: 'A minimalist, high-performance tool for guitar players to accelerate muscle memory with the 1-minute chord transition exercise.',
+  icons: { icon: '/favicon.svg' },
 };
 
 export const viewport = {
