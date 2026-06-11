@@ -48,11 +48,11 @@ It maintains the same visual identity and styling system as the core application
 * **Navigation Links**:
   * "The Concept" (scrolls to the About section `#concept`)
   * "How It Works" (scrolls to the Methodology/How it Works section `#how-it-works`)
-  * "JustinGuitar" (scrolls to the JustinGuitar Homage section `#justinguitar`)
-  * "GitHub" (opens external link in a new tab with a Lucide `github` icon)
+  * "Inspiration" (scrolls to the JustinGuitar Homage section `#inspiration`)
+  * "GitHub" (opens external link in a new tab; displays only a brand-crimson GitHub icon, slightly larger than text links, with no label)
 
 * **Call to Action (CTA) Button**:
-  * Text: "Start Practice" with a Lucide `play` icon.
+  * Text: "Start Practice" followed by a Lucide `play` icon (`[ Start Practice > ]`).
   * Action: Navigates to `/app` path.
 
 ---
@@ -69,7 +69,7 @@ It maintains the same visual identity and styling system as the core application
   * "A minimalist tool designed for guitar players to accelerate muscle memory. Based on the proven 1-minute chord change exercise."
 
 * **Action Buttons**:
-  * Primary button: "Open Practice App" with a Lucide `arrow-right` icon. Action: Navigates to `/app` path.
+  * Primary button: "Open Practice App" followed by a Lucide `play` icon (`[ Open Practice App > ]`). Action: Navigates to `/app` path.
   * Secondary button: "Learn More". Action: Scrolls smoothly to the About section (`#concept`).
 
 ---
@@ -124,7 +124,7 @@ It maintains the same visual identity and styling system as the core application
   * "Take just 1 minute a day. Your fingers will thank you when playing your favorite songs."
 
 * **CTA Button**:
-  * Text: "Enter GripShift" with a Lucide `rocket` icon.
+  * Text: "Enter GripShift" followed by a Lucide `play` icon (`[ Enter GripShift > ]`).
   * Action: Navigates to `/app` path.
 
 ---
