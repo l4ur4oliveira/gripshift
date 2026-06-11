@@ -14,7 +14,11 @@ function GithubIcon({ className }) {
 export default function HomePage() {
   const scrollTo = (id) => (e) => {
     e.preventDefault();
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    const el = document.getElementById(id);
+    if (el) {
+      const top = el.getBoundingClientRect().top + window.scrollY - 80;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
   };
 
   return (
@@ -115,7 +119,7 @@ export default function HomePage() {
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { num: '01', title: 'Choose Two Chords', desc: <>Select two chords you want to master today. For example: <span className="text-brandWhite font-semibold">A Major</span> and <span className="text-brandWhite font-semibold">D Major</span>.</> },
+              { num: '01', title: 'Random Chord Pair', desc: 'The app selects two chords at random for you to practice. Focus on transitioning between them cleanly and quickly.' },
               { num: '02', title: 'Start GripShift', desc: 'Start the 1-minute timer. Focus on transitioning between chords, strumming to ensure every note rings out clearly.' },
               { num: '03', title: 'Beat Your Score', desc: <>Count how many clean transitions you complete in 1 minute. Track your personal best. The recommended target is <span className="text-brandCrimson font-semibold">30 transitions per minute</span>.</> },
             ].map((step) => (

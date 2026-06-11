@@ -98,7 +98,7 @@ It maintains the same visual identity and styling system as the core application
 * **Section Subtitle**: "Simple steps to transform your finger speed with the ideal study method."
 
 * **Steps Grid** (3 items):
-  * **01: Choose Two Chords**: Explains selecting two chords (e.g., A and D).
+  * **01: Random Chord Pair**: Explains that the app randomly selects two chords to practice.
   * **02: Start GripShift**: Explains starting the 1-minute timer and practicing chord transitions.
   * **03: Beat Your Score**: Explains counting changes, aiming for a target of 30 transitions per minute.
 
@@ -185,7 +185,7 @@ Since this is a static informational page, state requirements are minimal:
 ## Logic Requirements
 
 * Navigation: Clicks on "Start Practice", "Open Practice App", and "Enter GripShift" must navigate the user to the `/app` path.
-* Smooth scroll navigation: Clicks on anchor links ("The Concept", "How It Works", "JustinGuitar", "Learn More") must scroll smoothly to their respective section anchors.
+* Smooth scroll navigation: Clicks on anchor links ("The Concept", "How It Works", "Inspiration", "Learn More") must scroll smoothly to their respective section anchors, offset by the sticky header height (80px).
 
 ---
 
