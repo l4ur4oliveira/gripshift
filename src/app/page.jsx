@@ -21,7 +21,7 @@ export default function HomePage() {
     <>
       <header className="border-b border-brandSilver/10 bg-brandBlack/90 backdrop-blur-md sticky top-0 z-50">
         <div className="max-w-6xl mx-auto px-6 h-20 flex items-center">
-          <a href="/" className="mr-auto">
+          <a href="#hero" onClick={scrollTo('hero')} className="mr-auto">
             <img src="/logo.svg" alt="GripShift" className="h-9 w-auto" />
           </a>
 
@@ -44,43 +44,51 @@ export default function HomePage() {
       </header>
 
       <main className="flex-grow">
-        <section className="max-w-6xl mx-auto px-6 pt-16 pb-24 md:py-32 grid md:grid-cols-12 gap-12 items-center">
-          <div className="md:col-span-7 space-y-8">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded bg-brandCard border border-brandSilver/10 text-xs text-brandCrimson font-oswald uppercase tracking-wider">
-              <span className="flex h-2 w-2 rounded-full bg-brandCrimson animate-pulse"></span>
-              100% Free & No Sign-up
-            </div>
+        <section id="hero" className="md:relative">
+          <div className="max-w-6xl mx-auto px-6 pt-16 pb-12 md:pb-24 md:py-32 grid md:grid-cols-12 gap-12 items-center">
+            <div className="md:col-span-7 space-y-8">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded bg-brandCard border border-brandSilver/10 text-xs text-brandCrimson font-oswald uppercase tracking-wider">
+                <span className="flex h-2 w-2 rounded-full bg-brandCrimson animate-pulse"></span>
+                100% Free & No Sign-up
+              </div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-oswald font-bold uppercase tracking-tight text-brandWhite leading-none">
-              Master guitar chord <span className="text-brandCrimson">transitions</span>.
-            </h1>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-oswald font-bold uppercase tracking-tight text-brandWhite leading-none">
+                Master guitar chord <span className="text-brandCrimson">transitions</span>.
+              </h1>
 
-            <p className="text-lg text-brandSilver leading-relaxed max-w-xl">
-              A minimalist tool designed for guitar players to accelerate muscle memory. Based on the proven 1-minute chord change exercise.
-            </p>
+              <p className="text-lg text-brandSilver leading-relaxed max-w-xl">
+                A minimalist tool designed for guitar players to accelerate muscle memory. Based on the proven 1-minute chord change exercise.
+              </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 pt-2">
-              <a href="/app" className="bg-brandCrimson hover:bg-red-700 text-brandWhite font-oswald uppercase tracking-wider font-bold px-8 py-4 rounded text-base transition-all shadow-xl shadow-brandCrimson/15 hover:shadow-brandCrimson/25 flex items-center justify-center gap-3">
-                Open Practice App <Play className="w-5 h-5 fill-current" />
-              </a>
-              <a href="#concept" onClick={scrollTo('concept')} className="bg-brandCard hover:bg-brandBlack text-brandSilver hover:text-brandWhite border border-brandSilver/10 font-oswald uppercase tracking-wider font-medium px-8 py-4 rounded text-base transition-all flex items-center justify-center gap-2">
-                Learn More
-              </a>
+              <div className="flex flex-col sm:flex-row gap-4 pt-2">
+                <a href="/app" className="bg-brandCrimson hover:bg-red-700 text-brandWhite font-oswald uppercase tracking-wider font-bold px-8 py-4 rounded text-base transition-all shadow-xl shadow-brandCrimson/15 hover:shadow-brandCrimson/25 flex items-center justify-center gap-3">
+                  Open Practice App <Play className="w-5 h-5 fill-current" />
+                </a>
+                <a href="#concept" onClick={scrollTo('concept')} className="bg-brandCard hover:bg-brandBlack text-brandSilver hover:text-brandWhite border border-brandSilver/10 font-oswald uppercase tracking-wider font-medium px-8 py-4 rounded text-base transition-all flex items-center justify-center gap-2">
+                  Learn More
+                </a>
+              </div>
             </div>
           </div>
 
-          <div className="md:col-span-5 relative">
-            <div className="absolute -inset-1 rounded bg-gradient-to-tr from-brandCrimson to-red-900 opacity-20 blur-xl"></div>
-            <div className="relative bg-brandCard border border-brandSilver/10 rounded overflow-hidden shadow-2xl">
-              <div className="aspect-[3/2] flex items-center justify-center bg-brandBlack/50 p-8">
-                <div className="text-center space-y-4">
-                  <div className="w-16 h-16 rounded-full bg-brandCard border border-brandSilver/10 flex items-center justify-center mx-auto">
-                    <svg className="w-8 h-8 text-brandCrimson fill-current" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="5 3 19 12 5 21 5 3" /></svg>
-                  </div>
-                  <p className="text-brandSilver text-sm font-oswald uppercase tracking-wider">App Preview</p>
-                </div>
-              </div>
-            </div>
+          <div className="hidden md:block absolute top-0 right-0 w-1/2 h-full">
+            <div className="w-full h-full" style={{
+              backgroundImage: 'url(/hero-image.avif)',
+              backgroundSize: 'cover',
+              backgroundPosition: 'center right',
+              maskImage: 'linear-gradient(to right, transparent 0%, black 50%)',
+              WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 50%)',
+            }} />
+          </div>
+
+          <div className="block md:hidden h-[50vh]">
+            <div className="w-full h-full" style={{
+              backgroundImage: 'url(/hero-image.avif)',
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              maskImage: 'linear-gradient(to bottom, transparent 0%, black 50%)',
+              WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 50%)',
+            }} />
           </div>
         </section>
 
