@@ -207,6 +207,26 @@ Since this is a static informational page, state requirements are minimal:
 
 ---
 
+## SEO & Social Sharing
+
+* **Title**: "GripShift - Master Your Chord Transitions"
+* **Description**: "A minimalist, high-performance tool for guitar players to accelerate muscle memory with the 1-minute chord transition exercise."
+* **Open Graph**:
+  * `og:site_name`: "GripShift"
+  * `og:type`: "website"
+  * `og:url`: `https://gripshift-app.vercel.app/`
+  * `og:title`: matches page title
+  * `og:description`: matches page description
+  * `og:image`: `/social-image.jpg` (1200×630 JPEG)
+  * `og:locale`: `en_US`
+* **Twitter Card**:
+  * `twitter:card`: `summary_large_image`
+  * `twitter:title`: matches page title
+  * `twitter:description`: matches page description
+  * `twitter:image`: `/social-image.jpg`
+
+---
+
 ## Future Enhancements (Out of Scope)
 
 * Multi-language support (English/Portuguese toggle)

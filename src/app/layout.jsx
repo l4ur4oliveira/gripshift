@@ -13,10 +13,40 @@ const oswald = Oswald({
   variable: '--font-oswald',
 });
 
+const siteMetadata = {
+  siteUrl: 'https://gripshift-app.vercel.app/',
+  siteTitle: 'GripShift - Master Your Chord Transitions',
+  siteDescription: 'A minimalist, high-performance tool for guitar players to accelerate muscle memory with the 1-minute chord transition exercise.',
+  siteImage: '/social-image.jpg',
+}
+
 export const metadata = {
-  title: 'GripShift - Master Your Chord Transitions',
-  description: 'A minimalist, high-performance tool for guitar players to accelerate muscle memory with the 1-minute chord transition exercise.',
+  metadataBase: new URL(siteMetadata.siteUrl),
+  title: siteMetadata.siteTitle,
+  description: siteMetadata.siteDescription,
   icons: { icon: '/favicon.svg' },
+  openGraph: {
+    siteName: 'GripShift',
+    type: 'website',
+    url: siteMetadata.siteUrl,
+    title: siteMetadata.siteTitle,
+    description: siteMetadata.siteDescription,
+    images: [
+      {
+        url: siteMetadata.siteImage,
+        width: 1200,
+        height: 630,
+        alt: 'GripShift logo with the phrase Master Your Chord Transitions and a background image of a cellphone showing the app.',
+      },
+    ],
+    locale: 'en_US',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: siteMetadata.siteTitle,
+    description: siteMetadata.siteDescription,
+    images: [siteMetadata.siteImage],
+  },
 };
 
 export const viewport = {

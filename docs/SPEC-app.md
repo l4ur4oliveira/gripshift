@@ -297,6 +297,18 @@ const [prepCountdown, setPrepCountdown] = useState(null); // null, 3, 2, or 1
 
 ---
 
+## Metadata
+
+The app page (`/app`) inherits the root layout's metadata defined in `src/app/layout.jsx`, which includes:
+* Page title and description
+* Open Graph tags (`og:title`, `og:description`, `og:image`, etc.)
+* Twitter Card tags (`summary_large_image` card)
+* Favicon reference
+
+The social sharing image (`/social-image.jpg`) and SEO values are shared with the landing page.
+
+---
+
 ## Constraints
 
 * Do NOT introduce external state libraries
