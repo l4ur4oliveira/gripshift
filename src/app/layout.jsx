@@ -1,4 +1,5 @@
 import { Open_Sans, Oswald } from 'next/font/google';
+import { Analytics } from "@vercel/analytics/next"
 import './globals.css';
 
 const openSans = Open_Sans({
@@ -60,6 +61,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${openSans.variable} ${oswald.variable}`}>
       <body className="antialiased min-h-screen bg-brandBlack text-brandWhite selection:bg-brandCrimson selection:text-brandWhite">
+        <Analytics />
         {children}
       </body>
     </html>
