@@ -1,0 +1,60 @@
+name: ✨ Feature Request
+description: Suggest a new feature or improvement for the project.
+title: "[FEAT] <Enter a clear and concise title here>"
+labels: ["feature"]
+assignees: []
+
+body:
+  - type: input
+    id: title
+    attributes:
+      label: Title
+      description: A short, descriptive title for the bug.
+      placeholder: "Feature X not loading on dashboard"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Describe the feature you want to add or the improvement you want to make.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected_behavior
+    attributes:
+      label: Expected Behavior
+      description: Explain what you expected to happen.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Validate
+      description: Steps to validate the feature.
+      placeholder: |
+        1. Go to '...'
+        2. Click on '...'
+        3. Scroll down to '...'
+        4. See error
+    validations:
+      required: false
+
+  - type: upload
+    id: images
+    attributes:
+      label: Upload Images
+      description: Attach screenshots or paste relevant images (if applicable).
+    validations:
+      required: false
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Additional Notes
+      description: Any additional context or information about the issue.
+    validations:
+      required: false

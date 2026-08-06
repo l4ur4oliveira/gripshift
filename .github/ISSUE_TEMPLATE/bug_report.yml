@@ -1,0 +1,74 @@
+name: 🐞 Bug Report
+description: Report a bug or unexpected behavior in the project.
+title: "[BUG] <Enter a clear and concise title here>"
+labels: ["bug"]
+assignees: []
+
+body:
+  - type: input
+    id: title
+    attributes:
+      label: Title
+      description: A short, descriptive title for the bug.
+      placeholder: "Feature X not loading on dashboard"
+    validations:
+      required: true
+
+  - type: textarea
+    id: current_behavior
+    attributes:
+      label: Current Behavior
+      description: Explain what actually happened.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected_behavior
+    attributes:
+      label: Expected Behavior
+      description: Explain what you expected to happen.
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment Details
+      description: Mention your environment details (OS, browser, Node.js version, etc.)
+      placeholder: "e.g., Windows 11, Chrome 128, Node v18.17.0"
+      value: |
+        - OS:
+        - Device:
+        - Screen Size:
+        - Other:
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce
+      description: Steps to reproduce the behavior.
+      placeholder: |
+        1. Go to '...'
+        2. Click on '...'
+        3. Scroll down to '...'
+        4. See error
+    validations:
+      required: false
+
+  - type: upload
+    id: screenshots
+    attributes:
+      label: Upload Screenshots
+      description: Attach screenshots or paste relevant console logs (if applicable).
+    validations:
+      required: false
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Additional Note
+      description: Any additional context or information about the issue.
+    validations:
+      required: false
